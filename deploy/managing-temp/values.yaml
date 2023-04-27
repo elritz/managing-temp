@@ -1,7 +1,7 @@
 replicaCount: 3
 
 image:
-  repository: barfriends/managing-temp
+  repository: ghcr.io/elritz/managing-temp
   pullPolicy: Always
   tag: main
 
