@@ -1,16 +1,21 @@
 import { buildSubgraphSchema } from "@apollo/subgraph";
-import { ApolloServer } from "apollo-server";
+import { ApolloServer } from "@apollo/server";
+import { ApolloServerPluginInlineTraceDisabled } from "@apollo/server/plugin/disabled";
+import { startStandaloneServer } from "@apollo/server/standalone";
 import { typeDefs } from "./typedefs";
 import { resolvers } from "./resolvers";
-import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 
-const server = new ApolloServer({
-  schema: buildSubgraphSchema({ typeDefs, resolvers }),
-  csrfPrevention: true,
-  cache: "bounded",
-  plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
-});
+const mainServer = (async function () {
+  const server = new ApolloServer({
+    schema: buildSubgraphSchema({ typeDefs, resolvers }),
+    plugins: [ApolloServerPluginInlineTraceDisabled()],
+  });
 
-server.listen(process.env.PORT ?? 4000).then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: 5002 },
+  });
+
+  console.info(`🚀 Server ready at ${url}graphql`);
+})();
+
+mainServer;

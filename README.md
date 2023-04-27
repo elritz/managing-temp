@@ -1,4 +1,4 @@
-# build-a-supergraph-subgraph-b
+# managing-temp
 
 This is a work-in-progress repo and small part of the Apollo Solutions [build-a-supergraph](https://github.com/apollosolutions/build-a-supergraph) workshop.
 
@@ -25,8 +25,8 @@ When doing changes locally `npm run watch` will watch both the server and the Ty
 
 Please follow the fowling steps to build and run this though docker:
 
-1. `docker build . -t ghcr.io/GITHUB_USER_NAME/subgraph-b` - build command
-2. `docker run -p 4000:4000 --name subgraph-b -t ghcr.io/GITHUB_USER_NAME/subgraph-b` - run command
+1. `docker build . -t ghcr.io/GITHUB_USER_NAME/managing-temp` - build command
+2. `docker run -p 4000:4000 --name managing-temp -t ghcr.io/GITHUB_USER_NAME/managing-temp` - run command
 
 ## Open Telemetry Tracing
 
@@ -35,7 +35,7 @@ This repo is set up with Open Telemetry traces. Please add or change the variabl
 ## Helm chart notes
 
 - Make sure your docker image is public. If its not public the deploy will fail because it wont be able to pull the image.
-- Please update the repo name in `deploy/subgraph-b/values.yaml` on line 4.
+- Please update the repo name in `deploy/managing-temp/values.yaml` on line 4.
 
 ### Setting up github container registry
 

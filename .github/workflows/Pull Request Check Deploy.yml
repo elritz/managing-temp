@@ -15,4 +15,4 @@ jobs:
 
       - name: Helm lint
         id: list-changed
-        run: helm lint ./deploy/subgraph-b
+        run: helm lint ./deploy/managing-temp

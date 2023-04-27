@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "subgraph-b.fullname" . }}
+  name: {{ include "managing-temp.fullname" . }}
   labels:
-    {{- include "subgraph-b.labels" . | nindent 4 }}
+    {{- include "managing-temp.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "subgraph-b.fullname" . }}
+    name: {{ include "managing-temp.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

@@ -1,7 +1,7 @@
 replicaCount: 3
 
 image:
-  repository: ghcr.io/apollosolutions/build-a-supergraph-subgraph-b
+  repository: ghcr.io/elritz/managing-temp
   pullPolicy: Always
   tag: main
 
@@ -26,7 +26,7 @@ ingress:
   className: ""
   annotations: {}
   hosts:
-    - host: subgraph-b.local
+    - host: managing-temp.local
       paths:
         - path: /
           pathType: Prefix
